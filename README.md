@@ -1,0 +1,1 @@
+very simple, use with bun for built in fetch function
