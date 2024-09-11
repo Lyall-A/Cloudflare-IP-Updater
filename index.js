@@ -4,7 +4,7 @@ let lastIp;
 
 (async function check() {
     await fetch(config.ipEndpoint).then(i => i.json()).then(async ipJson => {
-        const ip = config.ipKey.split(".").reduce((curr, prev) => curr[prev], ipJson);
+        const ip = config.ipKey.split(".").reduce((acc, curr) => acc?.[curr], ipJson);
         if (!ip || lastIp === ip) return;
         
         console.log(timestamp(), `IP changed from '${lastIp || "nothing"}' to '${ip || "nothing"}'`);
